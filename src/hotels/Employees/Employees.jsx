@@ -1,4 +1,5 @@
 import { Card, CardBody, CardTitle, CardSubtitle, Table } from "reactstrap";
+import Breadcrumb from "../../components/Breadcrumb";
 
 
 const employees = [
@@ -48,9 +49,9 @@ const Employees = () => {
     return (
         <div className='content-wrapper'>
             <div className="content-header">
+                <Breadcrumb route={'Employee'} />
                 <Card>
                     <CardBody>
-                        <CardTitle tag="h5">Employees Listing</CardTitle>
 
                         <Table className="no-wrap mt-3 align-middle" responsive borderless>
                             <thead>

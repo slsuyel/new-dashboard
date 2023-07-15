@@ -13,9 +13,7 @@ export default function Home() {
           </div>
           <div className="col-sm-6">
             <ol className="breadcrumb float-sm-right">
-              <li className="breadcrumb-item">
-                <li className="breadcrumb-item active">Home</li>
-              </li>
+              <li className="breadcrumb-item active">Home</li>
             </ol>
           </div>
         </div>
@@ -39,7 +37,6 @@ export default function Home() {
               </Col>
             </Row>
           </div>
-
         </div>
       </div>
       <div className="content">
@@ -107,11 +104,9 @@ export default function Home() {
       <div className="content-header row">
         {/* sm="6" lg="6" xl="7" xxl="8 */}
         <div>
-          < SalesChart />
+          <SalesChart />
         </div>
-
       </div>
-
     </div>
   );
 }

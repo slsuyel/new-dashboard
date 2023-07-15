@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { Button, Card, CardBody, CardTitle, Table, Modal, ModalHeader, ModalBody } from 'reactstrap';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const BookingData = [
   {
@@ -51,104 +52,105 @@ const Booking = () => {
 
   return (
     <div className='content-wrapper'>
-      <Card>
-        <CardBody>
-          <CardTitle tag="h5">All Bookings</CardTitle>
-          <Table className="no-wrap mt-3 align-middle" responsive>
-            <thead>
-              <tr>
-                <th>Customer Name</th>
-                <th>Phone No</th>
-                <th>Status</th>
-                <th>Details</th>
-              </tr>
-            </thead>
-            <tbody>
-              {BookingData.map((booking, index) => (
-                <tr key={index}>
-                  <td>{booking.customarName}</td>
-                  <td>{booking.Phone}</td>
-                  <td>{booking.bookingStatus}</td>
-                  <td>
-                    <Button className="btn text-nowrap" color="primary" size="sm" onClick={() => openModal(booking)}>
-                      See Details
-                    </Button>
-                  </td>
+      <div className="content-header">
+        <Breadcrumb route={'Booking'} />
+        <Card>
+          <CardBody>
+            <Table className="no-wrap mt-3 align-middle" responsive>
+              <thead>
+                <tr>
+                  <th>Customer Name</th>
+                  <th>Phone No</th>
+                  <th>Status</th>
+                  <th>Details</th>
                 </tr>
-              ))}
-            </tbody>
-          </Table>
-        </CardBody>
-      </Card>
+              </thead>
+              <tbody>
+                {BookingData.map((booking, index) => (
+                  <tr key={index}>
+                    <td>{booking.customarName}</td>
+                    <td>{booking.Phone}</td>
+                    <td>{booking.bookingStatus}</td>
+                    <td>
+                      <Button className="btn text-nowrap" color="primary" size="sm" onClick={() => openModal(booking)}>
+                        See Details
+                      </Button>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </Table>
+          </CardBody>
+        </Card>
 
-      <Modal isOpen={modalOpen} toggle={toggleModal}>
-        {selectedBooking && (
-          <>
-            <ModalHeader toggle={toggleModal}>Booking Details of: {selectedBooking.customarName}</ModalHeader>
-            <ModalBody>
-              <div>
-                <div className="align-items-center d-flex gap-2 mb-2">
-                  <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" width="50px" alt="Customer" />
-                  <div>
-                    <h5 className="fw-bold">{selectedBooking?.customarName}</h5>
-                    <h6>{selectedBooking.Phone}</h6>
+        <Modal isOpen={modalOpen} toggle={toggleModal}>
+          {selectedBooking && (
+            <>
+              <ModalHeader toggle={toggleModal}>Booking Details of: {selectedBooking.customarName}</ModalHeader>
+              <ModalBody>
+                <div>
+                  <div className="align-items-center d-flex gap-2 mb-2">
+                    <img src="https://cdn-icons-png.flaticon.com/128/3135/3135715.png" width="50px" alt="Customer" />
+                    <div>
+                      <h5 className="fw-bold">{selectedBooking?.customarName}</h5>
+                      <h6>{selectedBooking.Phone}</h6>
+                    </div>
                   </div>
-                </div>
-                <div className="my-3">
-                  <div className="d-flex justify-content-between px-2">
-                    <span>Checkedin Date</span>
-                    <span>{selectedBooking.checkIn}</span>
+                  <div className="my-3">
+                    <div className="d-flex justify-content-between px-2">
+                      <span>Checkedin Date</span>
+                      <span>{selectedBooking.checkIn}</span>
+                    </div>
+                    <div className="d-flex justify-content-between px-2">
+                      <span>Checkedout Date</span>
+                      <span>{selectedBooking.checkOut}</span>
+                    </div>
                   </div>
-                  <div className="d-flex justify-content-between px-2">
-                    <span>Checkedout Date</span>
-                    <span>{selectedBooking.checkOut}</span>
-                  </div>
-                </div>
 
-                <div className="p-3 rounded-4 shadow-lg">
-                  <table className="table border">
-                    <thead>
-                      <tr>
-                        <th className="border" scope="col">
-                          Room
-                        </th>
-                        <th className="border" scope="col">
-                          Type
-                        </th>
-                        <th className="border" scope="col">
-                          Rent
-                        </th>
-                      </tr>
-                    </thead>
-                    <tbody>
-                      <tr>
-                        <td className="border">{selectedBooking.details.roomNo.join(', ')}</td>
-                        <td className="border">{selectedBooking.details.roomType.join(', ')}</td>
-                        <td className="border">{selectedBooking.details.total.join(', ')}</td>
-                      </tr>
-                    </tbody>
-                  </table>
-                  <div>
-                    <div className="d-flex justify-content-between px-2">
-                      <span>Booking Status</span>
-                      <span>{selectedBooking.bookingStatus}</span>
-                    </div>
-                    <div className="d-flex justify-content-between px-2">
-                      <span>Discount</span>
-                      <span>{selectedBooking.discount}</span>
-                    </div>
-                    <div className="d-flex justify-content-between px-2">
-                      <span>Advance</span>
-                      <span>{selectedBooking.advance}</span>
+                  <div className="p-3 rounded-4 shadow-lg">
+                    <table className="table border">
+                      <thead>
+                        <tr>
+                          <th className="border" scope="col">
+                            Room
+                          </th>
+                          <th className="border" scope="col">
+                            Type
+                          </th>
+                          <th className="border" scope="col">
+                            Rent
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        <tr>
+                          <td className="border">{selectedBooking.details.roomNo.join(', ')}</td>
+                          <td className="border">{selectedBooking.details.roomType.join(', ')}</td>
+                          <td className="border">{selectedBooking.details.total.join(', ')}</td>
+                        </tr>
+                      </tbody>
+                    </table>
+                    <div>
+                      <div className="d-flex justify-content-between px-2">
+                        <span>Booking Status</span>
+                        <span>{selectedBooking.bookingStatus}</span>
+                      </div>
+                      <div className="d-flex justify-content-between px-2">
+                        <span>Discount</span>
+                        <span>{selectedBooking.discount}</span>
+                      </div>
+                      <div className="d-flex justify-content-between px-2">
+                        <span>Advance</span>
+                        <span>{selectedBooking.advance}</span>
+                      </div>
                     </div>
                   </div>
                 </div>
-              </div>
-            </ModalBody>
-          </>
-        )}
-      </Modal>
-    </div>
+              </ModalBody>
+            </>
+          )}
+        </Modal>
+      </div>  </div>
   );
 };
 

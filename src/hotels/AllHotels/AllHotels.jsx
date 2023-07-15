@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { Button, Card, CardBody, CardSubtitle, CardTitle, Table } from 'reactstrap';
+import Breadcrumb from '../../components/Breadcrumb';
 
 
 const hotelData = [
@@ -55,9 +56,10 @@ const AllHotels = () => {
 
     <div className='content-wrapper'>
       <div className="content-header">
+        <Breadcrumb route={'Hotels'}/>
         <Card>
           <CardBody>
-            <CardTitle tag="h5">All Hotels</CardTitle>
+
             <Table className="no-wrap mt-3 align-middle" responsive borderless>
               <thead>
                 <tr>
