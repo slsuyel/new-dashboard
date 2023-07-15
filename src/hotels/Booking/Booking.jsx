@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { Button, Card, CardBody, CardTitle, Table, Modal, ModalHeader, ModalBody } from 'reactstrap';
-import Breadcrumb from '../../components/Breadcrumb';
 
+import Breadcrumb from '../../components/Breadcrumb';
 const BookingData = [
   {
     customarName: "Tamim",
@@ -54,7 +54,15 @@ const Booking = () => {
     <div className='content-wrapper'>
       <div className="content-header">
         <Breadcrumb route={'Booking'} />
+
+        {/* search-bar */}
+        <div className="border mb-2 mx-auto search-bar">
+          <input type="text" placeholder="Search..." />
+          <button type="submit"><i className="fas fa-search"></i></button>
+        </div>
+
         <Card>
+
           <CardBody>
             <Table className="no-wrap mt-3 align-middle" responsive>
               <thead>

@@ -1,12 +1,14 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, Col, Table } from 'reactstrap';
 import Rooms from './Rooms';
+import Breadcrumb from '../../components/Breadcrumb';
 
 const HotelDetails = () => {
     return (
         <div className='content-wrapper'>
             <div className='content-header'>
-                <h2>  Hotel Name : Hanna Gover</h2>
+                <Breadcrumb route={'Hanna Gover'} />
+              
                 <Col lg="12">
                     <Card>
                         <CardTitle tag="h6" className="border-bottom p-3 mb-0">

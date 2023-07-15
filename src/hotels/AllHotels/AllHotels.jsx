@@ -82,7 +82,7 @@ const AllHotels = () => {
                     <td>  {hotel.checkIn}</td>
                     <td>  {hotel.checkOut}</td>
                     <td>
-                      <Link to={`/hotel/${hotel.id}`}>
+                      <Link to={`/dashboard/hotel/${hotel.id}`}>
                         <Button className="btn" color="primary" size="sm">
                           see details
                         </Button></Link>
