@@ -24,16 +24,16 @@ export default function Home() {
           <div className="bg-primary text-white my-3 p-3 rounded">
             <Row>
               <Col md="4">
-                <h6>Total Sales</h6>
-                <h4 className="mb-0 fw-bold">$10,345</h4>
+                <h6>Total Hotels</h6>
+                <h4 className="mb-0 fw-bold">345</h4>
               </Col>
               <Col md="4">
-                <h6>This Month</h6>
-                <h4 className="mb-0 fw-bold">$7,545</h4>
+                <h6>Today Booking</h6>
+                <h4 className="mb-0 fw-bold">45</h4>
               </Col>
               <Col md="4">
-                <h6>This Week</h6>
-                <h4 className="mb-0 fw-bold">$1,345</h4>
+                <h6>Available Room</h6>
+                <h4 className="mb-0 fw-bold">345</h4>
               </Col>
             </Row>
           </div>

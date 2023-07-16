@@ -14,6 +14,7 @@ import AdminRoute from "./AdminRoute";
 import Blogs from "../pages/blogs";
 import Users from "../pages/users";
 import "../App.css";
+import Test from "../pages/Test";
 export const router = createBrowserRouter([
     {
         path: "/",
@@ -31,7 +32,8 @@ export const router = createBrowserRouter([
             {
                 path: "/signup",
                 element: <Signup />,
-            }
+            },
+
         ],
     },
     {
@@ -74,6 +76,7 @@ export const router = createBrowserRouter([
                 path: 'users',
                 element: <Users />
             },
+          
 
         ]
     }
