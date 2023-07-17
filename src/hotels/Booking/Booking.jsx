@@ -13,14 +13,14 @@ const BookingData = [
         "phone": "01712345678",
         "bookingStatus": "checkedIn",
         "details": {
-          "roomNo": ['209', '201','565'],
+          "roomNo": ['209', '201', '565'],
           "roomType": ['single', 'double', 'triple'],
           "total": ["1500", "2000", "2500"],
         },
         "discount": '200',
-        "advance": "1000",
+        "subTotal": '20000',
+        "advance": "10000",
         "payable": "300",
-        "due": "",
         "checkIn": "12/07/2023",
         "checkOut": "12/07/2023"
       },
@@ -29,14 +29,13 @@ const BookingData = [
         "phone": "01712345678",
         "bookingStatus": "checkedOut",
         "details": {
-          "roomNo": ['209', '901','404'],
+          "roomNo": ['209', '901', '404'],
           "roomType": ['single', 'double', 'triple'],
           "total": ["1500", "2000", "2500"],
         },
-        "discount": '200',
+        "discount": '200', "subTotal": '19000',
         "advance": "1000",
         "payable": "300",
-        "due": "",
         "checkIn": "12/07/2023",
         "checkOut": "12/07/2023"
       },
@@ -55,9 +54,9 @@ const BookingData = [
           "total": ["1500", "2000", "2500"],
         },
         "discount": '200',
+        "subTotal": '22000',
         "advance": "1000",
         "payable": "300",
-        "due": "",
         "checkIn": "12/07/2023",
         "checkOut": "12/07/2023"
       }
@@ -75,10 +74,9 @@ const BookingData = [
           "roomType": ['single', 'double', 'triple'],
           "total": ["1500", "2000", "2500"],
         },
-        "discount": '200',
+        "discount": '200', "subTotal": '20000',
         "advance": "1000",
         "payable": "300",
-        "due": "",
         "checkIn": "12/07/2023",
         "checkOut": "12/07/2023"
       }
@@ -97,9 +95,9 @@ const BookingData = [
           "total": ["1200", "1200"],
         },
         "discount": '0',
+        "subTotal": '25000',
         "advance": "500",
         "payable": "700",
-        "due": "",
         "checkIn": "13/07/2023",
         "checkOut": "15/07/2023"
       }
@@ -227,57 +225,83 @@ const Booking = () => {
                       <span>{selectedBooking.checkOut}</span>
                     </div>
                   </div>
-
+                  <div className="d-flex justify-content-between px-2">
+                    <span>Booking Status</span>
+                    <span className="fw-semibold">{selectedBooking.bookingStatus}</span>
+                  </div>
                   <div className="p-3 rounded-4 shadow-lg">
-                  <table className="table border">
-  <thead>
-    <tr>
-      <th className="border" scope="col">
-        Room
-      </th>
-      <th className="border" scope="col">
-        Type
-      </th>
-      <th className="border" scope="col">
-        Rent
-      </th>
-    </tr>
-  </thead>
-  <tbody>
-    {selectedBooking.details.roomType.map((roomType, index) => (
-      <tr key={index}>
-        <td className="border">{selectedBooking.details.roomNo[index]}</td>
-        <td className="border">{roomType}</td>
-        <td className="border">{selectedBooking.details.total[index]}</td>
-      </tr>
-    ))}
-  </tbody>
-</table>
+
+                    <table className="table border">
+                      <thead>
+                        <tr>
+                          <th className="border" scope="col">
+                            Room
+                          </th>
+                          <th className="border" scope="col">
+                            Type
+                          </th>
+                          <th className="border" scope="col">
+                            Rent
+                          </th>
+                        </tr>
+                      </thead>
+                      <tbody>
+                        {selectedBooking.details.roomType.map((roomType, index) => (
+                          <tr key={index}>
+                            <td className="border">{selectedBooking.details.roomNo[index]}</td>
+                            <td className="border">{roomType}</td>
+                            <td className="border">{selectedBooking.details.total[index]}</td>
+                          </tr>
+                        ))}
+                      </tbody>
+                    </table>
 
                     <div>
+
                       <div className="d-flex justify-content-between px-2">
-                        <span>Booking Status</span>
-                        <span>{selectedBooking.bookingStatus}</span>
+                        <span>Sub Total</span>
+                        <span className='fw-medium'>{selectedBooking.subTotal}</span>
                       </div>
                       <div className="d-flex justify-content-between px-2">
                         <span>Discount</span>
-                        <span>{selectedBooking.discount}</span>
+                        <span className='fw-medium'>{selectedBooking.discount}</span>
                       </div>
                       <div className="d-flex justify-content-between px-2">
                         <span>Advance</span>
-                        <span>{selectedBooking.advance}</span>
+                        <span className='fw-medium'>{selectedBooking.advance}</span>
                       </div>
                       <div className="d-flex justify-content-between px-2">
-                        <span>Due</span>
-                        <span>00.00</span>
+                        <span>Payable</span>
+                        <span className='fw-medium'>{selectedBooking.payable}</span>
                       </div>
+
+
+
                     </div>
+                  </div>
+                </div>
+
+                <div className='mx-3 my-3 shadow-sm'>
+                  <h6 className="border-top fw-medium mt-3 pt-1">Transaction History</h6>
+                  <div className='border-bottom py-2'>
+                    <div className="d-flex flex-wrap justify-content-between">  <span>Abu Taher Molla</span>
+                      <span className='text-success'>+ Tk 500</span></div>
+                    <div className="d-flex flex-wrap justify-content-between"><span className='date-size'>25-06-2023 To 28-06-2023</span>
+                      <span className='date-size'>25-06-2023</span></div>
+                  </div>
+                  <div className='border-bottom py-2'>
+                    <div className="d-flex flex-wrap justify-content-between">  <span>Abu Taher Molla</span>
+                      <span className='text-danger'>- Tk 300</span></div>
+                    <div className="d-flex flex-wrap justify-content-between"><span className='date-size'>25-06-2023 To 28-06-2023</span>
+                      <span className='date-size'>25-06-2023</span></div>
                   </div>
                 </div>
               </ModalBody>
             </>
           )}
         </Modal>
+
+
       </div>
     </div>
   );

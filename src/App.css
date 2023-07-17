@@ -1,13 +1,15 @@
-body{
+body {
   font-family: 'Mitr';
 }
-code{
+
+code {
   font-family: 'Mitr';
 }
 
 .dropdown-menu {
   min-width: 4rem;
 }
+
 .search-bar {
   display: flex;
   align-items: center;
@@ -29,4 +31,13 @@ code{
   background-color: transparent;
   cursor: pointer;
   padding: 5px;
+}
+
+.date-size {
+  font-size: 12px;
+}
+
+.Search-input:focus {
+  outline: none; 
+
 }

@@ -1,45 +1,44 @@
-import { Card, CardBody, CardTitle, CardSubtitle, Table } from "reactstrap";
+import { Card, CardBody, Form, Table } from "reactstrap";
 import Breadcrumb from "../../components/Breadcrumb";
-
 
 const employees = [
     {
         name: "Hanna Gover",
         email: "hgover@gmail.com",
-        hotel: "Flexy React",
-        address: "pending",
+        hotel: "Hotel A",
+        address: "Dhaka",
 
 
     },
     {
         name: "Hanna Gover",
         email: "hgover@gmail.com",
-        hotel: "Lading pro React",
-        address: "done",
+        hotel: "Hotel B",
+        address: "Mirpur",
 
 
     },
     {
         name: "Hanna Gover",
         email: "hgover@gmail.com",
-        hotel: "Elite React",
-        address: "holt",
+        hotel: "Hotel C",
+        address: "Dhaka",
 
 
     },
     {
         name: "Hanna Gover",
         email: "hgover@gmail.com",
-        hotel: "Flexy React",
-        address: "pending",
+        hotel: "Hotel D",
+        address: "Lalbag",
 
 
     },
     {
         name: "Hanna Gover",
         email: "hgover@gmail.com",
-        hotel: "Ample React",
-        address: "done",
+        hotel: "Hotel E",
+        address: "Banani",
 
 
     },
@@ -50,6 +49,17 @@ const Employees = () => {
         <div className='content-wrapper'>
             <div className="content-header">
                 <Breadcrumb route={'Employee'} />
+                {/* Search bar */}
+                <div className="col-sm-6 col-md-4">
+                    <div class="d-flex border px-2 py-2 rounded-5 mb-2">
+                        <button type="submit" class="border-0">
+                            <i class="fa fa-search"></i>
+                        </button>
+                        <input type="text" class="border-0 w-100 Search-input" placeholder="Search hotel, employees" />
+                    </div>
+                </div>
+
+
                 <Card>
                     <CardBody>
 

@@ -1,13 +1,14 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Button, Card, CardBody, CardSubtitle, CardTitle, Table } from 'reactstrap';
+import { Button, Card, CardBody, Table } from 'reactstrap';
 import Breadcrumb from '../../components/Breadcrumb';
-
+import Select, { components } from 'react-select';
+import { Form } from 'react-bootstrap';
 
 const hotelData = [
   {
     id: "6hf54",
-    name: "Hanna Gover",
+    name: "Hotel A",
     email: "hgover@gmail.com",
     location: "Flexy React",
     status: "pending",
@@ -16,7 +17,7 @@ const hotelData = [
   },
   {
     id: "654gd",
-    name: "Hanna Gover",
+    name: "Hotel B",
     email: "hgover@gmail.com",
     location: "Lading pro React",
     status: "done",
@@ -25,7 +26,7 @@ const hotelData = [
   },
   {
     id: "65jkl4",
-    name: "Hanna Gover",
+    name: "Hotel C",
     email: "hgover@gmail.com",
     location: "Elite React",
     status: "holt",
@@ -34,7 +35,7 @@ const hotelData = [
   },
   {
     id: "65ghgg4",
-    name: "Hanna Gover",
+    name: "Hotel D",
     email: "hgover@gmail.com",
     location: "Flexy React",
     status: "pending",
@@ -43,7 +44,7 @@ const hotelData = [
   },
   {
     id: "654fdd",
-    name: "Hanna Gover",
+    name: "Hotel E",
     email: "hgover@gmail.com",
     location: "Ample React",
     status: "done",
@@ -51,15 +52,53 @@ const hotelData = [
     checkOut: "20/06/2023",
   },
 ];
-const AllHotels = () => {
-  return (
 
-    <div className='content-wrapper'>
+const AllHotels = () => {
+  const [selectedHotel, setSelectedHotel] = useState(null);
+
+  const hotelOptions = hotelData.map((data) => ({
+    value: data.name,
+    label: data.name,
+  }));
+
+  const handleHotelSelect = (selectedOption) => {
+    setSelectedHotel(selectedOption);
+  };
+
+  const DropdownIndicator = (props) => {
+    return (
+      <components.DropdownIndicator {...props}>
+        <span className="fa fa-chevron-down" />
+      </components.DropdownIndicator>
+    );
+  };
+
+  // Filter the hotelData based on the selected hotel
+  const filteredHotelData = selectedHotel
+    ? hotelData.filter((hotel) => hotel.name === selectedHotel.value)
+    : hotelData;
+
+  return (
+    <div className="content-wrapper">
       <div className="content-header">
-        <Breadcrumb route={'Hotels'}/>
+        <Breadcrumb route={'Hotels'} />
+
+        <div className="align-items-center d-flex mb-2">
+          <Form.Group controlId="hotelSelect" className="me-3">
+            <Form.Label>Select Hotel:</Form.Label>
+            <Select
+              className="border"
+              options={hotelOptions}
+              value={selectedHotel}
+              onChange={handleHotelSelect}
+              components={{ DropdownIndicator }}
+              placeholder="Select a hotel"
+            />
+          </Form.Group>
+        </div>
+
         <Card>
           <CardBody>
-
             <Table className="no-wrap mt-3 align-middle" responsive borderless>
               <thead>
                 <tr>
@@ -72,21 +111,19 @@ const AllHotels = () => {
                 </tr>
               </thead>
               <tbody>
-                {hotelData.map((hotel, index) => (
+                {filteredHotelData.map((hotel, index) => (
                   <tr key={index} className="border-top">
                     <td>{hotel.name}</td>
                     <td>{hotel.location}</td>
-                    <td>
-                      {hotel.status}
-                    </td>
-                    <td>  {hotel.checkIn}</td>
-                    <td>  {hotel.checkOut}</td>
+                    <td>{hotel.status}</td>
+                    <td>{hotel.checkIn}</td>
+                    <td>{hotel.checkOut}</td>
                     <td>
                       <Link to={`/dashboard/hotel/${hotel.id}`}>
                         <Button className="btn" color="primary" size="sm">
-                          see details
-                        </Button></Link>
-
+                          See Details
+                        </Button>
+                      </Link>
                     </td>
                   </tr>
                 ))}
@@ -95,7 +132,6 @@ const AllHotels = () => {
           </CardBody>
         </Card>
       </div>
-
     </div>
   );
 };

@@ -7,7 +7,7 @@ const HotelDetails = () => {
     return (
         <div className='content-wrapper'>
             <div className='content-header'>
-                <Breadcrumb route={'Hanna Gover'} />
+                <Breadcrumb route={'Hotel Name'} />
               
                 <Col lg="12">
                     <Card>

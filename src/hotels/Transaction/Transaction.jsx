@@ -8,25 +8,61 @@ const Transaction = () => {
             id: 1,
             hotelName: 'Hotel A',
             date: '2023-07-12',
-            amount: 1500,
-            paymentMethod: 'Credit Card',
-            status: 'Paid'
+            total: "100000",
+            transaction: [
+                {
+                    name: "Kabir",
+                    phone: "01712345678",
+                    amount: "10000",
+                    purpose: 'advance'
+                },
+                {
+                    name: "Sajib",
+                    phone: "017125678",
+                    amount: "90000",
+                    purpose: 'due'
+                }
+            ],
         },
         {
             id: 2,
             hotelName: 'Hotel B',
             date: '2023-07-11',
-            amount: 2000,
-            paymentMethod: 'Cash',
-            status: 'Pending'
+            total: "9500",
+            transaction: [
+                {
+                    name: "Tabib",
+                    phone: "01712345678",
+                    amount: "1000",
+                    purpose: 'advance'
+                },
+                {
+                    name: "Sakib",
+                    phone: "017125678",
+                    amount: "8500",
+                    purpose: 'advance'
+                }
+            ],
         },
         {
             id: 3,
             hotelName: 'Hotel C',
             date: '2023-07-12',
-            amount: 2500,
-            paymentMethod: 'Credit Card',
-            status: 'Paid'
+            total: "95000",
+            transaction: [
+                {
+                    name: "Tabib",
+                    phone: "01712345678",
+                    amount: "10000",
+                    purpose: 'advance'
+                },
+                {
+                    name: "Sakib",
+                    phone: "017125678",
+                    amount: "85000",
+                    purpose: 'advance'
+                }
+            ],
         }
     ];
 
@@ -45,7 +81,7 @@ const Transaction = () => {
     const getTodayCollection = () => {
         const today = new Date().toISOString().split('T')[0];
         const todayTransactions = transactionData.filter((transaction) => transaction.date === today);
-        const todayCollection = todayTransactions.reduce((total, transaction) => total + transaction.amount, 0);
+        const todayCollection = todayTransactions.reduce((total, transaction) => total + parseInt(transaction.amount), 0);
         return todayCollection;
     };
 
@@ -55,16 +91,13 @@ const Transaction = () => {
                 <Breadcrumb route={'Transaction'} />
                 <Card>
                     <CardBody>
-
                         <Table className="no-wrap mt-3 align-middle" responsive>
                             <thead>
                                 <tr>
                                     <th>ID</th>
                                     <th>Hotel Name</th>
+                                    <th>Total Collections</th>
                                     <th>Date</th>
-                                    <th>Amount</th>
-                                    <th>Payment Method</th>
-                                    <th>Status</th>
                                     <th>Details</th>
                                 </tr>
                             </thead>
@@ -73,10 +106,9 @@ const Transaction = () => {
                                     <tr key={transaction.id}>
                                         <td>{transaction.id}</td>
                                         <td>{transaction.hotelName}</td>
+                                        <td>{transaction.total}</td>
                                         <td>{transaction.date}</td>
-                                        <td>{transaction.amount}</td>
-                                        <td>{transaction.paymentMethod}</td>
-                                        <td>{transaction.status}</td>
+
                                         <td>
                                             <Button className="btn text-nowrap" color="primary" size="sm" onClick={() => openModal(transaction)}>
                                                 See Details
@@ -86,9 +118,7 @@ const Transaction = () => {
                                 ))}
                             </tbody>
                         </Table>
-                        <div>
-                            <p>Today's Collection: {getTodayCollection()}</p>
-                        </div>
+
                     </CardBody>
                 </Card>
 
@@ -98,34 +128,27 @@ const Transaction = () => {
                             <ModalHeader toggle={toggleModal}>Transaction Details (ID: {selectedTransaction.id})</ModalHeader>
                             <ModalBody>
                                 <div>
-                                    <Form>
-                                        <FormGroup>
-                                            <Label for="hotelName">Hotel Name</Label>
-                                            <Input type="text" name="hotelName" id="hotelName" value={selectedTransaction.hotelName} disabled />
-                                        </FormGroup>
-                                        <FormGroup>
-                                            <Label for="date">Date</Label>
-                                            <Input type="text" name="date" id="date" value={selectedTransaction.date} disabled />
-                                        </FormGroup>
-                                        <FormGroup>
-                                            <Label for="amount">Amount</Label>
-                                            <Input type="text" name="amount" id="amount" value={selectedTransaction.amount} disabled />
-                                        </FormGroup>
-                                        <FormGroup>
-                                            <Label for="paymentMethod">Payment Method</Label>
-                                            <Input
-                                                type="text"
-                                                name="paymentMethod"
-                                                id="paymentMethod"
-                                                value={selectedTransaction.paymentMethod}
-                                                disabled
-                                            />
-                                        </FormGroup>
-                                        <FormGroup>
-                                            <Label for="status">Status</Label>
-                                            <Input type="text" name="status" id="status" value={selectedTransaction.status} disabled />
-                                        </FormGroup>
-                                    </Form>
+                                    <Table className="no-wrap mt-3 align-middle" responsive>
+                                        <thead>
+                                            <tr>
+                                                <th>Name</th>
+                                                <th>Phone Number</th>
+                                                <th>Amount</th>
+                                                <th>Purpose</th>
+
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            {selectedTransaction.transaction.map((transaction) => (
+                                                <tr key={transaction.name}>
+                                                    <td>{transaction.name}</td>
+                                                    <td>{transaction.phone}</td>
+                                                    <td>{transaction.amount}</td>
+                                                    <td>{transaction.purpose}</td>
+                                                </tr>
+                                            ))}
+                                        </tbody>
+                                    </Table>
                                 </div>
                             </ModalBody>
                         </>
