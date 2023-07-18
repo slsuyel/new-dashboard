@@ -7,13 +7,14 @@ import Home from "../pages/home";
 import About from "../pages/about";
 import Booking from "../hotels/Booking/Booking";
 import AllHotels from "../hotels/AllHotels/AllHotels";
-import HotelDetails from "../hotels/AllHotels/HotelDetails";
+import Hotels from "../hotels/AllHotels/Hotels";
 import Employees from "../hotels/Employees/Employees";
 import Transaction from "../hotels/Transaction/Transaction";
 import AdminRoute from "./AdminRoute";
 import Blogs from "../pages/blogs";
 import Users from "../pages/users";
 import "../App.css";
+import Calendar from "../pages/calendar/Calendar";
 
 export const router = createBrowserRouter([
     {
@@ -45,6 +46,10 @@ export const router = createBrowserRouter([
                 element: <Home />
             },
             {
+                path: 'calendar',
+                element: <Calendar />
+            },
+            {
                 path: 'about',
                 element: <About />
             },
@@ -54,12 +59,12 @@ export const router = createBrowserRouter([
             },
             {
                 path: 'hotels',
-                element: <AllHotels />
+                element: <Hotels />
             },
-            {
-                path: 'hotel/:id',
-                element: <HotelDetails />
-            },
+            // {
+            //     path: 'hotel/:id',
+            //     element: <HotelDetails />
+            // },
             {
                 path: 'employees',
                 element: <Employees />

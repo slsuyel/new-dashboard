@@ -29,21 +29,28 @@ export default function Sidebar() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/dashboard/booking" className="nav-link">
-                  <i className="nav-icon fas fa-calendar"></i>
-                  <p>Booking</p>
-                </Link>
-              </li>
-              <li className="nav-item">
                 <Link to="/dashboard/hotels" className="nav-link">
                   <i className="nav-icon fas fa-hotel"></i>
                   <p>Hotels</p>
                 </Link>
               </li>
               <li className="nav-item">
+                <Link to="/dashboard/booking" className="nav-link">
+                  <i className="nav-icon fas fa-calendar"></i>
+                  <p>Booking</p>
+                </Link>
+              </li>
+
+              <li className="nav-item">
                 <Link to="/dashboard/employees" className="nav-link">
                   <i className="nav-icon fas fa-users"></i>
                   <p>Employees</p>
+                </Link>
+              </li>{/*  */}
+              <li className="nav-item">
+                <Link to="/dashboard/calendar" className="nav-link">
+                  <i className="nav-icon fa fa-calendar"></i>
+                  <p>Calendar</p>
                 </Link>
               </li>
               <li className="nav-item">
@@ -70,7 +77,7 @@ export default function Sidebar() {
                   <p>Users</p>
                 </Link>
               </li>
-             
+
             </ul>
           </nav>
         </div>

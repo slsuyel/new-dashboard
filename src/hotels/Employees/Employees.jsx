@@ -51,7 +51,7 @@ const Employees = () => {
                 <Breadcrumb route={'Employee'} />
                 {/* Search bar */}
                 <div className="col-sm-6 col-md-4">
-                    <div class="d-flex border px-2 py-2 rounded-5 mb-2">
+                    <div class="d-flex border border-3 px-2 py-2 rounded-5 mb-2">
                         <button type="submit" class="border-0">
                             <i class="fa fa-search"></i>
                         </button>

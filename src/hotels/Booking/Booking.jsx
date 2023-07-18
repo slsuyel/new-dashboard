@@ -146,11 +146,9 @@ const Booking = () => {
   return (
     <div className='content-wrapper d-flex flex-column'>
       <div className="content-header">
-        <Breadcrumb route={'Booking'} />
-
-        <div className="align-items-center d-flex mb-2">
+        <div className="align-items-center d-flex mb-2 pt-2">
           <Form.Group controlId="hotelSelect" className="me-3">
-            <Form.Label>Select Hotel:</Form.Label>
+   
             <Select
               className='border'
               options={hotelOptions}
@@ -161,6 +159,8 @@ const Booking = () => {
           </Form.Group>
 
         </div>
+      
+
 
         {selectedHotel && (
           <h2>Hotel Name: {selectedHotel.value}</h2>

@@ -1,15 +1,18 @@
 import React from 'react';
 import { Card, CardBody, CardTitle, Col, Table } from 'reactstrap';
-
+import { Link } from 'react-router-dom';
 const Room = () => {
-    // Sample data
+    /* 
+    Sample dat
+    102
+Honeymoon Suite AC */
     const rooms = [
         {
             id: 1,
-            type: 'Single',
-            number: 201,
+            type: 'Honeymoon Suite',
+            number: 102,
             rent: 1000,
-            description: '1 bed Single room',
+            description: '1st Floor,Honeymoon Suite AC',
         },
         {
             id: 2,
@@ -45,10 +48,12 @@ const Room = () => {
         <div >
             <Col lg="12">
                 <Card>
-                    <CardTitle tag="h6" className="border-bottom p-3 mb-0">
-                        <i className="bi bi-card-text me-2"> </i>
+                    <div className='d-flex justify-content-between align-items-center'><CardTitle tag="h6" className="border-bottom p-3 mb-0">
                         Rooms
                     </CardTitle>
+                        <Link to='/' className="border-bottom btn btn-secondary mb-0  text-decoration-none">
+                            <i className="fa-solid fa-plus"></i>    Add Room
+                        </Link></div>
                     <CardBody className="">
                         <Table bordered>
                             <thead>

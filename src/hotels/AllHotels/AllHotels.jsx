@@ -81,11 +81,9 @@ const AllHotels = () => {
   return (
     <div className="content-wrapper">
       <div className="content-header">
-        <Breadcrumb route={'Hotels'} />
-
         <div className="align-items-center d-flex mb-2">
           <Form.Group controlId="hotelSelect" className="me-3">
-            <Form.Label>Select Hotel:</Form.Label>
+
             <Select
               className="border"
               options={hotelOptions}
@@ -96,6 +94,9 @@ const AllHotels = () => {
             />
           </Form.Group>
         </div>
+        <Breadcrumb route={'Hotels'} />
+
+
 
         <Card>
           <CardBody>
